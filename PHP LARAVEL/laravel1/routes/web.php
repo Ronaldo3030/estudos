@@ -18,7 +18,15 @@ Route::get('/noticia/{slug}', function ($slug) {
     echo "Slug: " . $slug;
 });
 
-Route::get('/noticia/{slug}/comentario/{comentario}', function ($slug, $comentario) {
-    echo "Slug: ".$slug."<br>";
-    echo "Comentario: ".$comentario;
+Route::get('/noticia/{slug}/comentario/{id}', function ($slug, $id) {
+    echo "Slug: " . $slug . "<br>";
+    echo "Comentario: " . $id;
 });
+
+Route::get('/user/{id}', function ($id) {
+    echo "Usuario ID: " . $id;
+});
+
+Route::get('/user/{name}', function ($name) {
+    echo "Usuario nome: " . $name;
+})->where('name', '[a-z]+');
