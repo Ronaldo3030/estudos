@@ -45,3 +45,9 @@ Route::prefix('/config')->group(function () {
         echo "Configurações PERMISSÕES.";
     })->name('permissoes');
 });
+
+
+// 404 NOTFOUND (página não encontrada)
+Route::fallback(function () {
+    echo "Página não encontrada!";
+});
