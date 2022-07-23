@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('teste');
 // });
 
-Route::view('/', 'welcome');
+Route::get('/', 'App\Http\Controllers\HomeController');
 Route::view('/teste', 'teste');
 
 
@@ -33,17 +33,9 @@ Route::get('/user/{name}', function ($name) {
 
 // GRUPO
 Route::prefix('/config')->group(function () {
-    Route::get('/', function () {
-        return view('config');
-    });
-
-    Route::get('/info', function () {
-        echo "Configurações INFO.";
-    })->name('info');
-
-    Route::get('/permissoes', function () {
-        echo "Configurações PERMISSÕES.";
-    })->name('permissoes');
+    Route::get('/', 'App\Http\Controllers\ConfigController@index');
+    Route::get('/info', 'App\Http\Controllers\ConfigController@info');
+    Route::get('/permissoes', 'App\Http\Controllers\ConfigController@permissoes');
 });
 
 
