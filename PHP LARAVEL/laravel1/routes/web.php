@@ -31,15 +31,17 @@ Route::get('/user/{name}', function ($name) {
 })->where('name', '[a-z]+');
 
 
+// GRUPO
+Route::prefix('/config')->group(function () {
+    Route::get('/', function () {
+        return view('config');
+    });
 
-Route::get('/config', function () {
-    return redirect()->route('info');
+    Route::get('/info', function () {
+        echo "Configurações INFO.";
+    })->name('info');
 
-    return view('config');
+    Route::get('/permissoes', function () {
+        echo "Configurações PERMISSÕES.";
+    })->name('permissoes');
 });
-Route::get('/config/info', function () {
-    echo "Configurações INFO.";
-})->name('info');
-Route::get('/config/permissoes', function () {
-    echo "Configurações PERMISSÕES.";
-})->name('permissoes');
