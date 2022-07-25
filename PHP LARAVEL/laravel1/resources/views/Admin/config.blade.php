@@ -1,3 +1,8 @@
+@extends('layouts.admin')
+
+@section('title', 'Configurações')
+
+@section('content')
 <h1>Configurações</h1>
 
 <p>Meu nome é {{ $nome }} e tenho {{ $idade }}</p>
@@ -13,3 +18,4 @@
 </form>
 
 ...
+@endsection
