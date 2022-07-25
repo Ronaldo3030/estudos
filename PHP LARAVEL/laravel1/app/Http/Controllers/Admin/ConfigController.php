@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ConfigController extends Controller
@@ -19,7 +20,13 @@ class ConfigController extends Controller
 
         // $data = $req->only([ 'nome', 'idade' ]);
 
-        return view('config');
+        $nome = "ronaldo";
+        $idade = 20;
+
+        return view('admin.config', [
+            'nome' => $nome,
+            'idade' => $idade
+        ]);
     }
     public function info(){
         echo "Configurações INFO";
