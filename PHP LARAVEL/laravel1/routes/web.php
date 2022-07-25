@@ -34,6 +34,7 @@ Route::get('/user/{name}', function ($name) {
 // GRUPO
 Route::prefix('/config')->group(function () {
     Route::get('/', 'App\Http\Controllers\ConfigController@index');
+    Route::post('/', 'App\Http\Controllers\ConfigController@index');
     Route::get('/info', 'App\Http\Controllers\ConfigController@info');
     Route::get('/permissoes', 'App\Http\Controllers\ConfigController@permissoes');
 });

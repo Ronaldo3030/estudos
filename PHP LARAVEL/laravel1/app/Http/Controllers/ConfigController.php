@@ -15,9 +15,10 @@ class ConfigController extends Controller
         // $data = $req->all();
 
         // $data = $req->input('nome');
-        $data = $req->query('nome', 'Visitante');
+        // $data = $req->query('nome', 'Visitante');
 
-        print_r($data);
+        // $data = $req->only([ 'nome', 'idade' ]);
+
         return view('config');
     }
     public function info(){
