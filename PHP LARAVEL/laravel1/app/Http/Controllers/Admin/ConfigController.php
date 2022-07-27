@@ -21,7 +21,7 @@ class ConfigController extends Controller
         // $data = $req->only([ 'nome', 'idade' ]);
 
         $nome = "ronaldo";
-        $idade = 20;
+        $idade = 13;
 
         return view('admin.config', [
             'nome' => $nome,
