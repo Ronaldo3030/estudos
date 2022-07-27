@@ -19,9 +19,9 @@
         <h3>icon</h3>
         @empty($_SESSION['user'])
             <div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-registro">
+                <a href="/register" class="btn btn-primary">
                     Registre-se
-                </button>
+                </a>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-login">
                     Login
                 </button>
