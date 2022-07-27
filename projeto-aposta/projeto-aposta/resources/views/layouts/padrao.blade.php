@@ -17,10 +17,16 @@
 <body>
     <header class="navbar navbar-dark bg-dark px-5 py-2" style="color: white;">
         <h3>icon</h3>
-        <div>
-            <button>Registre-se</button>
-            <button>Login</button>
-        </div>
+        @empty($_SESSION['user'])
+            <div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-registro">
+                    Registre-se
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-login">
+                    Login
+                </button>
+            </div>
+        @endempty
     </header>
 
     <section>
