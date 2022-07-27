@@ -23,9 +23,17 @@ class ConfigController extends Controller
         $nome = "ronaldo";
         $idade = 13;
 
+        $lista = [
+            'farinha',
+            'trigo',
+            'ovo',
+            'açucar'
+        ];
+
         return view('admin.config', [
             'nome' => $nome,
-            'idade' => $idade
+            'idade' => $idade,
+            'lista' => $lista
         ]);
     }
     public function info(){
