@@ -24,10 +24,10 @@ class ConfigController extends Controller
         $idade = 13;
 
         $lista = [
-            'farinha',
-            'trigo',
-            'ovo',
-            'açucar'
+            // 'farinha',
+            // 'trigo',
+            // 'ovo',
+            // 'açucar'
         ];
 
         return view('admin.config', [

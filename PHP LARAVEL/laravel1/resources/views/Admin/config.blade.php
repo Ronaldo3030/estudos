@@ -38,10 +38,15 @@
         @forelse($lista as $item)
             <li>{{ $item }}</li>
         @empty
-            <p>Não tem ingredientes para esse bolo</p>
+            {{-- sem atalho --}}
+            @component('alert')
+                @slot('type')
+                    Erro:
+                @endslot
+                Erro! tente novamente
+            @endcomponent
         @endforelse
     </ul>
-
 
     <form method="POST">
         @csrf
