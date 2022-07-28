@@ -40,6 +40,20 @@ Route::prefix('/config')->group(function () {
 });
 
 
+Route::prefix('/tarefas')->group(function(){
+    Route::get('/', 'App\Http\Controllers\TarefasController@list'); //listagem de tarefas
+
+    Route::get('add', 'App\Http\Controllers\TarefasController@add'); // tela de adição de nova tarefa
+    Route::post('add', 'App\Http\Controllers\TarefasController@addAction'); // ação de adição de nova tarefa
+
+    Route::get('edit/{id}', 'App\Http\Controllers\TarefasController@edit'); //tela de edição
+    Route::post('edit/{id}', 'App\Http\Controllers\TarefasController@editAction'); //ação de adição
+
+    Route::get('delete/{id}', 'App\Http\Controllers\TarefasController@delete'); //ação de delete
+
+    Route::get('marcar/{id}', 'App\Http\Controllers\TarefasController@done'); //marcar resolvido ou não
+});
+
 // 404 NOTFOUND (página não encontrada)
 Route::fallback(function () {
     echo "Página não encontrada!";

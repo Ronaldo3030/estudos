@@ -39,7 +39,7 @@
             <li>{{ $item }}</li>
         @empty
             {{-- sem atalho --}}
-            @component('alert')
+            @component('components.alert')
                 @slot('type')
                     Erro:
                 @endslot
