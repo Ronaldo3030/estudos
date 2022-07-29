@@ -2,6 +2,8 @@ const express = require('express');
 const server = express();
 const pup = require('puppeteer');
 
+const port = process.env.PORT || 3000;
+
 server.get('/get-jogos', (req, res) => {
 
     const url = 'https://fscore.com.br/';
@@ -34,6 +36,6 @@ server.get('/get-jogos', (req, res) => {
     })();
 })
 
-server.listen(3000, () => {
+server.listen(port, () => {
     console.log("Servidor funcionando!");
 })
