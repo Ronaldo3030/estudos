@@ -1,30 +1,32 @@
 const pup = require('puppeteer');
 
 const url = 'https://fscore.com.br/';
-(async () => {
-        const list = [];
-        const browser = await pup.launch({ headless: true });
-        const page = await browser.newPage();
-        console.log("INICIADO!");
 
-        await page.goto(url);
-        console.log("Foi para url.");
+const bot = async () => {
+    const list = [];
+    const browser = await pup.launch({ headless: true });
+    const page = await browser.newPage();
+    console.log("INICIADO!");
 
-        await page.waitForSelector('.index');
+    await page.goto(url);
+    console.log("Foi para url.");
 
-        const jogos = await page.$$eval('.match-grid-title', el => el.map(nome => nome.innerText));
+    await page.waitForSelector('.index');
 
-        
-        jogos.forEach(jogo => {
-            const obj = {};
-            let times = jogo.split('-');
-            obj.time_casa = times[0];
-            obj.time_fora = times[1];
+    const jogos = await page.$$eval('.match-grid-title', el => el.map(nome => nome.innerText));
 
-            list.push(obj);
-        });
 
-        await page.close();
+    jogos.forEach(jogo => {
+        const obj = {};
+        let times = jogo.split('-');
+        obj.time_casa = times[0];
+        obj.time_fora = times[1];
 
-        return list
-    })();
+        list.push(obj);
+    });
+
+    await browser.close();
+    return list;
+};
+
+module.exports = bot;
