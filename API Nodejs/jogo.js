@@ -4,7 +4,10 @@ const url = 'https://fscore.com.br/';
 
 const bot = async () => {
     const list = [];
-    const browser = await pup.launch({ headless: true });
+    const browser = await pup.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
     console.log("INICIADO!");
 
@@ -26,6 +29,7 @@ const bot = async () => {
     });
 
     await browser.close();
+    console.log("Trago todos")
     return list;
 };
 
