@@ -1,6 +1,6 @@
 const pup = require('puppeteer');
 
-const url = 'https://fscore.com.br/';
+const url = 'https://fscore.com.br/yesterday';
 
 // TIMES COM NOME - TÃO BUGANDO
 
