@@ -1,7 +1,7 @@
 {
   "name": "mercado-livre",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto feito para aprender mais sobre o assunto com Node.js.<br>",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
