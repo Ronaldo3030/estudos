@@ -5,6 +5,12 @@
 @section('content')
     <h2>Adição</h2>
 
+    @if (session('warning'))
+        @component('components.alert')
+            {{ session('warning') }}
+        @endcomponent
+    @endif
+
     <form method="POST">
         @csrf
 
