@@ -37,32 +37,33 @@
         <div class="col">
             <div class="container-form my-4 d-flex flex-column align-items-center">
                 <h2 class="title mb-4">Cadastro</h2>
-                <form class="w-75" method="POST" action="/cadastro-action">
+                <form class="w-75" method="POST" action="/cadastro">
+                    @csrf
+
                     <div class="mb-3">
                         <label for="exampleInputnome" class="form-label mini-title">Nome*</label>
                         <input name="nome" type="text" class="form-control" id="exampleInputnome"
-                            aria-describedby="nomeHelp" required>
+                            aria-describedby="nomeHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputemail" class="form-label mini-title">Email*</label>
                         <input name="email" type="email" class="form-control" id="exampleInputemail"
-                            aria-describedby="emailHelp" required>
+                            aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputsenha" class="form-label mini-title">Senha*</label>
                         <input name="senha" type="password" class="form-control" id="exampleInputsenha"
-                            aria-describedby="senhaHelp" required>
+                            aria-describedby="senhaHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputconfirme-senha" class="form-label mini-title">Confirme a senha*</label>
                         <input name="confirme-senha" type="password" class="form-control" id="exampleInputconfirme-senha"
-                            aria-describedby="confirmeSenhaHelp" required>
+                            aria-describedby="confirmeSenhaHelp">
                     </div>
                     <div class="mb-3">
-                        <!-- AJUSTAR MASCARA -->
                         <label for="exampleInputnascimento" class="form-label mini-title">Data de nascimento*</label>
                         <input name="nascimento" type="text" class="form-control date" id="nascimento"
-                            aria-describedby="nascimentoHelp" placeholder="dd/mm/aaaa" required>
+                            aria-describedby="nascimentoHelp" placeholder="dd/mm/aaaa">
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label mini-title">Imagem</label>
@@ -74,7 +75,7 @@
         </div>
         <div class="col">
             <div class="image-cadastro">
-                <img src="{{ asset('images/imagem-cadastro.jpg') }}" alt="">
+                <img src="{{ asset('images/imagem-cadastro.png') }}" alt="Pessoa com mochila e livros">
             </div>
         </div>
     </div>
