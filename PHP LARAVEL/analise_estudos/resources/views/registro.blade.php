@@ -37,6 +37,11 @@
         <div class="col">
             <div class="container-form my-4 d-flex flex-column align-items-center">
                 <h2 class="title mb-4">Cadastro</h2>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}<br>
+                    @endforeach
+                @endif
                 <form class="w-75" method="POST" action="/cadastro">
                     @csrf
 
@@ -64,10 +69,6 @@
                         <label for="exampleInputnascimento" class="form-label mini-title">Data de nascimento*</label>
                         <input name="nascimento" type="text" class="form-control date" id="nascimento"
                             aria-describedby="nascimentoHelp" placeholder="dd/mm/aaaa">
-                    </div>
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label mini-title">Imagem</label>
-                        <input name="imagem" class="form-control" type="file" id="formFile">
                     </div>
                     <button type="submit" class="mt-3 btn-menu-reverse btn-cadastro border-0 shadow">Cadastrar</button>
                 </form>
