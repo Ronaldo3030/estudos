@@ -17,6 +17,6 @@
         <label for="titulo">Titulo: </label><br>
         <input type="text" name="titulo"><br>
 
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Adicionar">
     </form>
 @endsection

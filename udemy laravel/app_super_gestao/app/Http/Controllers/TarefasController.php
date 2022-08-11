@@ -15,10 +15,12 @@ class TarefasController extends Controller
             'list' => $list
         ]);
     }
+
     public function add()
     {
         return view('tarefas.add');
     }
+
     public function addAction(Request $request)
     {
         if ($request->filled('titulo')) {
@@ -36,16 +38,49 @@ class TarefasController extends Controller
                 ->with('warning', 'Você não preencheu o Titulo');
         }
     }
-    public function edit()
+
+    public function edit($id)
     {
-        return view('tarefas.edit');
+        $data = DB::select('SELECT * FROM tarefas WHERE id = :id', [
+            'id' => $id
+        ]);
+
+        if (count($data) > 0) {
+            return view('tarefas.edit', [
+                'data' => $data[0]
+            ]);
+        } else {
+            return redirect()->route('tarefas.list');
+        }
     }
-    public function editAction()
+
+    public function editAction(Request $request, $id)
     {
+        if ($request->filled('titulo') && $id) {
+            $titulo = $request->input('titulo');
+
+            $data = DB::select('SELECT * FROM tarefas WHERE id = :id', [
+                'id' => $id
+            ]);
+
+            if (count($data) > 0) {
+                DB::update('UPDATE tarefas SET titulo = :titulo WHERE id = :id', [
+                    'id' => $id,
+                    'titulo' => $titulo
+                ]);
+            }
+            return redirect()->route('tarefas.list');
+        }else{
+            return redirect()
+                ->route('tarefas.edit', ['id'=>$id])
+                ->with('warning', 'Você não preencheu o Titulo');
+        }
     }
+
     public function delete()
     {
     }
+
     public function done()
     {
     }
