@@ -85,7 +85,14 @@ class TarefasController extends Controller
         return redirect()->route('tarefas.list');
     }
 
-    public function done()
+    public function done($id)
     {
+        //opção 1: select (verifica o valor de resolvido) e update
+        //opção 2: update matemático:
+        DB::update('UPDATE tarefas SET resolvido = 1 - resolvido WHERE id = :id', [
+            'id' => $id
+        ]);
+
+        return redirect()->route('tarefas.list');
     }
 }
