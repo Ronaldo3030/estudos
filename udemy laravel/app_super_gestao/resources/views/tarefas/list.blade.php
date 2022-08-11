@@ -22,7 +22,7 @@
                     </a>
                     {{ $item->titulo }}
                     <a href="{{ route('tarefas.edit', ['id' => $item->id]) }}">[ Editar ]</a>
-                    <a href="{{ route('tarefas.delete', ['id' => $item->id]) }}">[ Excluir ]</a>
+                    <a onclick="return confirm('Deseja mesmo excluir a tarefa {{$item->id}}?')" href="{{ route('tarefas.delete', ['id' => $item->id]) }}">[ Excluir ]</a>
                 </li>
             @endforeach
         </ul>
