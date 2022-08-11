@@ -76,7 +76,7 @@
         </div>
         <div class="col">
             <div class="image-cadastro">
-                <img src="{{ asset('images/imagem-cadastro.png') }}" alt="Pessoa com mochila e livros">
+                <img src="{{ asset('images/imagem-cadastro.jpg') }}" alt="Pessoa com mochila e livros">
             </div>
         </div>
     </div>
