@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 //     return 'Teste';
 // });
 
-Route::get('/', [\App\Http\Controllers\PrincipalController::class, 'principal']);
+Route::get('/', 'App\Http\Controllers\HomeController');
 
 Route::prefix('/tarefas')->group(function(){
     Route::get('/', 'App\Http\Controllers\TarefasController@list')->name('tarefas.list'); //listagem de tarefas
