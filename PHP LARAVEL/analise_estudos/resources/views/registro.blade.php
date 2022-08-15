@@ -37,6 +37,12 @@
         <div class="col">
             <div class="container-form my-4 d-flex flex-column align-items-center">
                 <h2 class="title mb-4">Cadastro</h2>
+                @if (session('email'))
+                    {{ session('email') }}
+                @endif
+                @if (session('erro'))
+                    {{ session('erro') }}
+                @endif
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         {{ $error }}<br>

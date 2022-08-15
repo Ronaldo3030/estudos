@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Usuario;
 
 class CadastroController extends Controller
 {
@@ -29,22 +29,32 @@ class CadastroController extends Controller
         $nascimento = $req->input('nascimento');
 
         if ($senha === $confirmeSenha) {
-            $data = DB::select('SELECT * FROM usuarios WHERE email = :email', [
-                'email' => $email
-            ]);
-            if (count($data) > 0) {
-                echo "Existe";
-                return;
+            $data = Usuario::where('email', $email);
+
+            if ($data) {
+                return redirect()->route('cadastro')->with('email', 'Esse e-mail já foi cadastrado!');
             }
-            DB::insert('INSERT INTO usuarios (nome, data_nascimento, senha, email) VALUES (:nome, :nascimento, :senha, :email)', [
-                'nome' => $nome,
-                'nascimento' => $nascimento,
-                'senha' => $senha,
-                'email' => $email,
-            ]);
+
+            $u = new Usuario;
+            $u->nome = $nome;
+            $u->email = $email;
+            $u->senha = $senha;
+            $u->data_nascimento = $nascimento;
+            $u->save();
             return redirect()->route('home');
         }
 
-        return redirect()->route('cadastro');
+        return redirect()->route('cadastro')->with('erro', 'Algum dado está incorreto! Tente novamente.');
+    }
+
+    public function login(Request $req)
+    {
+        $req->validate([
+            'email' => ['required', 'email'],
+            'senha' => ['required', 'string'],
+        ]);
+
+        $email = $req->input('email');
+        $senha = $req->input('senha');
     }
 }
