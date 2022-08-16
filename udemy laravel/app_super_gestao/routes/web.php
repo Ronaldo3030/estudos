@@ -35,3 +35,6 @@ GET -> /todo/{id}/edit - edit - NOME: todo.edit - FORM DE EDIÇÃO DE ITENS
 PUT -> /todo/{id} - update - NOME: todo.update - RECEBE OS DADOS E UPDATE ITEN (edit action)
 DELETE -> /todo/{id} - destroy - NOME: todo.destroy - DELETA O ITEM
 */
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
