@@ -16,15 +16,16 @@
 
     <div class="container-all">
         <div class="container-menu">
-            <ul>
-                <a href=""><li>Início</li></a>
-                <a href=""><li>Contas</li></a>
-                <a href=""><li>Cadastrar pagamento</li></a>
+            <ul class="w-100">
+                <a href=""><li class="item-menu selected"><i class="icon-menu fas fa-th-large"></i>Início</li></a>
+                <a href=""><li class="item-menu"><i class="icon-menu fas fa-shopping-basket"></i>Contas</li></a>
+                <a href=""><li class="item-menu"><i class="icon-menu fas fa-money-bill-wave-alt"></i>Pagamentos</li></a>
             </ul>
         </div>
         <div class="content-all">
             @yield('content')
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/ac5f400d27.js" crossorigin="anonymous"></script>
 </body>
 </html>

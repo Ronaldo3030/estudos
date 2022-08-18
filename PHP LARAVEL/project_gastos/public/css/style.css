@@ -6,6 +6,7 @@
     --gray: #B8BFCC;
     --light-black: #606C80;
     --black: #323C4D;
+    --blue: #2563EB;
 }
 body{
     background-color: var(--dark-white);
@@ -35,8 +36,27 @@ a{
     padding: 15px;
     margin: 0 25px;
 }
+.item-menu{
+    width: 100%;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.selected, .selected > *{
+    color: var(--blue) !important;
+}
 .container-menu li{
+    color: var(--light-black);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 20px;
+}
+.icon-menu {
+    width: 20px;
+    margin-right: 24px;
     font-size: 20px;
+    color: #DADEE5;
 }
 .content-all{
     overflow-y: auto;
