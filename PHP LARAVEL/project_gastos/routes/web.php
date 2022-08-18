@@ -12,5 +12,9 @@ Route::prefix('/cadastro')->group(function(){
 
 Route::prefix('/login')->group(function(){
     Route::get('/', 'App\Http\Controllers\LoginController@index')->name('login');
-    Route::post('/', 'App\Http\Controllers\LoginController@index')->name('login');
+    Route::post('/', 'App\Http\Controllers\LoginController@loginAction');
+});
+
+Route::prefix('/painel')->group(function(){
+    Route::get('/', 'App\Http\Controllers\PainelController@index')->name('painel');
 });

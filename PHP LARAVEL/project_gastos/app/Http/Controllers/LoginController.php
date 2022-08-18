@@ -16,13 +16,10 @@ class LoginController extends Controller
         $senha = $req->input('senha');
 
         if($email && $senha){
-            $conta = Usuario::where('email', $email)->where('senha', $senha)->get();
-            if($conta > 1){
-                echo "Logado";
-                return;
+            $conta = Usuario::where('email', $email)->where('senha', $senha)->first();
+            if($conta){
+                return redirect()->route('painel');
             }
-            echo "N deu";
-            return;
         }
         return redirect()->route('login')->with('erro', 'Algum dado está incorreto! Tente novamente.');
     }
