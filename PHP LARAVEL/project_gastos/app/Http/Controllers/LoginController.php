@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
 
 class LoginController extends Controller
@@ -11,16 +12,11 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function loginAction(Request $req){
-        $email = $req->input('email');
-        $senha = $req->input('senha');
-
-        if($email && $senha){
-            $conta = Usuario::where('email', $email)->where('senha', $senha)->first();
-            if($conta){
-                return redirect()->route('painel');
-            }
+    public function loginAction(Request $request){
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            dd('logou');
+        }else{
+            dd('não logou');
         }
-        return redirect()->route('login')->with('erro', 'Algum dado está incorreto! Tente novamente.');
     }
 }
