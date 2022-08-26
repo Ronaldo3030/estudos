@@ -8,14 +8,14 @@
 
 @section('content')
     <div class="container-all">
-        <h1>Lista de filmes</h1>
-    
-        <div class="glider-contain">
-            <div class="glider" id="container-filmes">
+        <h1 class="title text-center">Lista de filmes</h1>
+
+        <div class="glider-contain d-flex">
+            <button aria-label="Previous" class="glider-prev"><i class="fas fa-angle-double-left"></i></button>
+            <div class="d-none glider" id="container-filmes">
             </div>
-    
-            <button aria-label="Previous" class="glider-prev">«</button>
-            <button aria-label="Next" class="glider-next">»</button>
+            <img id="loading-filmes" class="m-0-auto" src="{{ asset('images/loading.svg') }}" alt="loading">
+            <button aria-label="Next" class="glider-next"><i class="fas fa-angle-double-right"></i></button>
         </div>
     </div>
 
@@ -24,9 +24,11 @@
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
     <script>
         setTimeout(() => {
+            document.querySelector('.glider').classList.remove('d-none')
+            document.querySelector('#loading-filmes').classList.add('d-none')
             new Glider(document.querySelector('.glider'), {
-                slidesToShow: 5,
-                slidesToScroll: 5,
+                slidesToScroll: 1,
+                slidesToShow: 4.5,
                 draggable: true,
                 dots: '.dots',
                 arrows: {
@@ -34,6 +36,6 @@
                     next: '.glider-next'
                 }
             });
-        }, 1000);
+        }, 3000);
     </script>
 @endsection

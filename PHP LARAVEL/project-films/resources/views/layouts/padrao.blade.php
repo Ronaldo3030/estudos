@@ -1,3 +1,4 @@
+{{-- https://www.figma.com/community/file/1136481779878001229 --}}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -21,6 +22,7 @@
     <footer>
         <p>footer</p>
     </footer>
+    <script src="https://kit.fontawesome.com/ac5f400d27.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

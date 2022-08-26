@@ -1,34 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,500;1,600;1,700&display=swap');
-*{
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* font-family: 'DM Sans', sans-serif;
+font-family: 'Raleway', sans-serif; */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     font-size: 62.5%;
     scroll-behavior: smooth;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
 }
 
-body{
-    background-color: #ccc;
+body {
+    background-color: #343434;
+    color: #FAFCFE;
 }
 
-.container-filmes div img{
+.container-filmes div img {
     width: 300px;
     height: auto;
 }
-.container-filmes div{
+
+.container-filmes div {
     font-size: 2.5rem;
     max-width: 20rem;
     padding: 1rem;
 }
 
-.container-all{
-    padding: 1rem 4.5rem;
+.container-all {
+    padding: 1rem 5.5rem;
 }
 
-.glider-slide{
-    margin: 0 1.5rem;
+.glider-slide {
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.glider-slide:nth-child(1) {
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.glider {
+    background-color: #181818;
+    padding-top: 2rem;
+    border-radius: 1rem;
+    -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.5);
+}
+
+.glider-next, .glider-prev {
+    padding: 1rem;
+    height: 100%;
+    top: auto;
+}
+
+.glider-next {
+    right: -5.5rem;
+    left: auto;
+}
+.glider-prev {
+    left: -5.5rem;
+    right: auto;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.m-0-auto {
+    margin: 0 auto;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 3.4rem;
+    color: #fff;
+    line-height: 2.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.sub-title {
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: #8F9BBA;
+    line-height: 2.4rem;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.text {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #fff;
+    line-height: 2.4rem;
+}
+
+.sub-text {
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #8F9BBA;
 }
