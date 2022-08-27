@@ -8,6 +8,7 @@
 
 @section('content')
     <div class="container-all">
+        <!-- Link to open the modal -->
         <h1 class="title text-center">Lista de filmes</h1>
 
         <div class="glider-contain d-flex">
@@ -19,9 +20,54 @@
         </div>
     </div>
 
-    {{-- <div id="container-filmes" class="container-filmes"></div> --}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                <div class="modal-body shadow rounded">
+                    <div class="mb-3">
+                        <h3 class="title modal-title" id="title"></h3>
+                    </div>
+                    <div class="info-modal">
+                        <img class="modal-image rounded" alt="Imagem filme">
+                        <div class="w-100">
+                            <div class="d-flex content-star mb-3">
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                {{-- <i class="fas fa-star"></i> --}}
+                            </div>
+                            <p class="modal-description text"></p>
+                            <a class="btn-padrao shadow mb-2" href="">Coment</a>
+                            <a class="btn-padrao shadow" href="">View Coments</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="{{ asset('js/list.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+    <script>
+        const exampleModal = document.getElementById('exampleModal')
+        exampleModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const name = button.getAttribute('data-bs-name')
+            const image = button.getAttribute('data-bs-image')
+            const description = button.getAttribute('data-bs-description')
+            const modalTitle = exampleModal.querySelector('.modal-title')
+            const modalImage = exampleModal.querySelector('.modal-image')
+            const modalDescription = exampleModal.querySelector('.modal-description')
+
+            modalTitle.textContent = name
+            modalImage.setAttribute('src', image)
+            modalDescription.textContent = description
+        })
+    </script>
     <script>
         setTimeout(() => {
             document.querySelector('.glider').classList.remove('d-none')
