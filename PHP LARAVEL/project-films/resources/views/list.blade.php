@@ -23,11 +23,10 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">X</button>
                 <div class="modal-body shadow rounded">
                     <div class="mb-3">
-                        <h3 class="title modal-title" id="title"></h3>
+                        <h3 class="title modal-title pt-2" id="title"></h3>
                     </div>
                     <div class="info-modal">
                         <img class="modal-image rounded" alt="Imagem filme">
