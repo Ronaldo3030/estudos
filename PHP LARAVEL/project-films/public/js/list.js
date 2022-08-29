@@ -12,7 +12,7 @@ window.onload = () => {
         }).then(data => {
             data.results.forEach(result => {
                 console.log(result)
-                criaCard(containerFilmes, result.original_title, result.poster_path, result.backdrop_path, result.overview)
+                criaCard(containerFilmes, result.id, result.original_title, result.poster_path, result.backdrop_path, result.overview)
             })
             console.log(data.results)
         }).catch(err => {

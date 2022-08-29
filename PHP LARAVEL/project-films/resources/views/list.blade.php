@@ -9,14 +9,16 @@
 @section('content')
     <div class="container-all">
         <!-- Link to open the modal -->
-        <h1 class="title text-center">Lista de filmes</h1>
-
-        <div class="glider-contain d-flex">
-            <button aria-label="Previous" class="glider-prev"><i class="fas fa-angle-double-left"></i></button>
-            <div class="d-none glider" id="container-filmes">
+        <div class="content">
+            <h1 class="title text-center">Lista de filmes</h1>
+    
+            <div class="glider-contain d-flex">
+                <button aria-label="Previous" class="glider-prev"><i class="fas fa-angle-double-left"></i></button>
+                <div class="d-none glider" id="container-filmes">
+                </div>
+                <img id="loading-filmes" class="m-0-auto" src="{{ asset('images/loading.svg') }}" alt="loading">
+                <button aria-label="Next" class="glider-next"><i class="fas fa-angle-double-right"></i></button>
             </div>
-            <img id="loading-filmes" class="m-0-auto" src="{{ asset('images/loading.svg') }}" alt="loading">
-            <button aria-label="Next" class="glider-next"><i class="fas fa-angle-double-right"></i></button>
         </div>
     </div>
 
@@ -40,7 +42,7 @@
                                 {{-- <i class="fas fa-star"></i> --}}
                             </div>
                             <p class="modal-description text"></p>
-                            <a class="btn-padrao shadow mb-2" href="">Coment</a>
+                            <a class="btn-padrao shadow mb-2 modal-btn-coment" href="">Coment</a>
                             <a class="btn-padrao shadow" href="">View Coments</a>
                         </div>
                     </div>
@@ -58,10 +60,13 @@
             const name = button.getAttribute('data-bs-name')
             const image = button.getAttribute('data-bs-image')
             const description = button.getAttribute('data-bs-description')
+            const id = button.getAttribute('data-bs-id')
             const modalTitle = exampleModal.querySelector('.modal-title')
             const modalImage = exampleModal.querySelector('.modal-image')
             const modalDescription = exampleModal.querySelector('.modal-description')
+            const modalBtnComent = exampleModal.querySelector('.modal-btn-coment')
 
+            modalBtnComent.setAttribute('href', '/filmes/'+id+'/coment')
             modalTitle.textContent = name
             modalImage.setAttribute('src', image)
             modalDescription.textContent = description

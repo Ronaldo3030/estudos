@@ -1,4 +1,4 @@
-function criaCard(containerFilmes, text, image, bigImage, description){
+function criaCard(containerFilmes, id, text, image, bigImage, description){
     let div = document.createElement("div")
     div.classList.add('glide__slide')
     div.setAttribute('data-bs-toggle', 'modal')
@@ -6,6 +6,7 @@ function criaCard(containerFilmes, text, image, bigImage, description){
     div.setAttribute('data-bs-name', text)
     div.setAttribute('data-bs-image', 'https://image.tmdb.org/t/p/w500/'+bigImage)
     div.setAttribute('data-bs-description', description)
+    div.setAttribute('data-bs-id', id)
     let p = document.createElement("p")
     p.classList.add('sub-title')
     let img = document.createElement("img")
