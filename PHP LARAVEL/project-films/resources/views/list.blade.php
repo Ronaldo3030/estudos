@@ -42,8 +42,8 @@
                                 {{-- <i class="fas fa-star"></i> --}}
                             </div>
                             <p class="modal-description text"></p>
-                            <a class="btn-padrao shadow mb-2 modal-btn-coment" href="">Coment</a>
-                            <a class="btn-padrao shadow" href="">View Coments</a>
+                            <a class="btn-padrao shadow mb-2 modal-btn-coment" href="">Comment</a>
+                            <a class="btn-padrao shadow" href="">View Comments</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
             const modalDescription = exampleModal.querySelector('.modal-description')
             const modalBtnComent = exampleModal.querySelector('.modal-btn-coment')
 
-            modalBtnComent.setAttribute('href', '/filmes/'+id+'/coment')
+            modalBtnComent.setAttribute('href', '/'+id+'/coment')
             modalTitle.textContent = name
             modalImage.setAttribute('src', image)
             modalDescription.textContent = description

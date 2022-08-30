@@ -107,7 +107,7 @@ body {
 .sub-title {
     font-weight: 500;
     font-size: 1.8rem;
-    color: #8F9BBA;
+    color: #fff;
     line-height: 2.4rem;
     margin-bottom: 1.2rem;
     overflow: hidden;
@@ -124,7 +124,7 @@ body {
 
 .sub-text {
     font-size: 1.4rem;
-    color: #8F9BBA;
+    color: #fff;
 }
 
 .btn-padrao{
@@ -194,4 +194,20 @@ body {
     margin: 0 0.1rem;
     color: #FFB547;
     cursor: pointer;
+}
+
+.filme-coment{
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.form-floating{
+    color: #252525;
+    font-size: 1.5rem;
+}
+
+.form-control{
+    font-size: 1.5rem;
+    resize: none;
 }
