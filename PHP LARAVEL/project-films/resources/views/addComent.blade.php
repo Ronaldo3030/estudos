@@ -16,7 +16,9 @@
                 <img class="shadow filme-coment mt-3" id="image-filme">
                 <div class="mt-3">
                     <h3 class="sub-title">Leave your comment below</h3>
-                    <form method="POST" action="" style="font-size: 1.5rem;">
+                    <form method="POST" style="font-size: 1.5rem;">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$id}}">
                         <div class="mb-1">
                             <label for="Author" class="form-label">Author</label>
                             <input name="author" type="text" class="form-control" id="Author" aria-describedby="AuthorHelp">
