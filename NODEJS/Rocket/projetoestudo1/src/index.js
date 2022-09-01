@@ -48,6 +48,7 @@ app.post("/register", (req, res) => {
         name,
         login,
         password,
+        friends: [],
         token: generateRandomtoken(55),
         id: uuidv4(),
     });
@@ -84,18 +85,41 @@ app.put('/user', verifyUserToken, (req, res) => {
     const { name, password } = req.body;
     const { user } = req;
 
-    if(name){
+    if (name) {
         user.name = name;
     }
-    if(password){
+    if (password) {
         user.password = password;
     }
-    if(!name && !password){
-        return res.status(400).json({error: "Data invalid!"});
+    if (!name && !password) {
+        return res.status(400).json({ error: "Data invalid!" });
     }
 
     return res.status(201).json({
         success: "User changed successfully!",
+        user
+    });
+});
+
+app.post('/add-friend', verifyUserToken, (req, res) => {
+    const { name_friend } = req.body;
+    const { user } = req;
+
+    const friendExists = users.find((user) => user.name === name_friend);
+
+    if(!friendExists){
+        return res.status(400).json({error: "Non-existent username!"});
+    }
+
+    const userFriendExists = user.friends.some((friend) => friend === name_friend);
+
+    if(userFriendExists){
+        return res.status(400).json({error: "You are already friends!"});
+    }
+
+    user.friends.push(name_friend);
+    return res.status(201).json({
+        success: "Friend added successfully",
         user
     });
 });
