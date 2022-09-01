@@ -41,7 +41,7 @@ app.post("/register", (req, res) => {
             result1 += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
 
-        return result1;
+        return result1.trim();
     }
 
     users.push({
@@ -53,6 +53,25 @@ app.post("/register", (req, res) => {
     });
 
     res.status(201).send();
+});
+
+app.get('/users', (req, res) => {
+    if (users.length === 0) {
+        return res.status(400).json({ error: "There are no users!" });
+    }
+    return res.json({ users });
+})
+
+app.post('/login', (req, res) => {
+    const { login, password } = req.body;
+
+    const user = users.find((user) => user.login === login);
+
+    if(!user || user.password !== password){
+        return res.status(400).json({error: "Data is invalid!"});
+    }
+
+    return res.json({success: "Successfully login!"});
 });
 
 app.listen(3333, () => {
