@@ -10,7 +10,7 @@ function verifyUserToken(req, res, next) {
     const { token } = req.headers;
     const user = users.find((user) => user.token === token);
     if (!user) {
-        return res.status(400).json({ error: "Token invalid!" });
+        return res.status(400).json({ error: "You have to be logged in!" });
     }
 
     req.user = user;
@@ -67,11 +67,37 @@ app.post('/login', (req, res) => {
 
     const user = users.find((user) => user.login === login);
 
-    if(!user || user.password !== password){
-        return res.status(400).json({error: "Data is invalid!"});
+    if (!user || user.password !== password) {
+        return res.status(400).json({ error: "Data is invalid!" });
     }
 
-    return res.json({success: "Successfully login!"});
+    return res.json({ success: "Successfully login!" });
+});
+
+app.get('/user', verifyUserToken, (req, res) => {
+    const { user } = req;
+
+    res.json(user);
+});
+
+app.put('/user', verifyUserToken, (req, res) => {
+    const { name, password } = req.body;
+    const { user } = req;
+
+    if(name){
+        user.name = name;
+    }
+    if(password){
+        user.password = password;
+    }
+    if(!name && !password){
+        return res.status(400).json({error: "Data invalid!"});
+    }
+
+    return res.status(201).json({
+        success: "User changed successfully!",
+        user
+    });
 });
 
 app.listen(3333, () => {
