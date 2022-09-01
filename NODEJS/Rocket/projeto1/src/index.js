@@ -29,4 +29,16 @@ app.post('/account', (req, res) => {
     res.status(201).send();
 });
 
+app.get('/statement/:cpf', (req, res) => {
+    const { cpf } = req.params;
+
+    const customer = customers.find(customer => customer.cpf === cpf);
+
+    if(!customer){
+        return res.status(400).json({error: "Cpf not exist!"});
+    }
+
+    return res.json(customer.statement);
+});
+
 app.listen(3333);
