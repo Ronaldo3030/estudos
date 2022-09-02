@@ -7,6 +7,10 @@ export function createCourse(req: Request, res: Response) {
         educator: "Ronaldo",
         duration: 11
     });
+    CreateCourseService.execute({
+        name: "React",
+        educator: "Blitzcranck",
+    });
 
     return res.send();
 }
