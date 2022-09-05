@@ -17,7 +17,7 @@ module.exports = {
 
         return res.status(201).send();
     },
-    getAll: async (req, res) => {
+    list: async (req, res) => {
         const existeGeneros = generos.some(item => item);
 
         if (!existeGeneros) {

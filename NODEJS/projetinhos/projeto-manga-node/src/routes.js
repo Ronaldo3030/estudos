@@ -1,16 +1,22 @@
 const express = require('express');
 const GeneroControllers = require('./controllers/GeneroControllers');
+const LivroControllers = require('./controllers/LivroControllers');
 const validaGenero = require('./middleware/validaGenero');
+const validaLivro = require('./middleware/validaLivro');
 const router = express.Router();
 
 router.get('/ping', (req, res) => {
     return res.json({ pong: "true" });
 });
 
-router.get("/generos", GeneroControllers.getAll);
-router.post("/generos/add", validaGenero.findByNameBody, GeneroControllers.add);
+router.get("/generos", GeneroControllers.list);
+router.post("/generos", validaGenero.findByNameBody, GeneroControllers.add);
 router.get('/generos/:nome', validaGenero.findByNameParams, GeneroControllers.get);
 router.put('/generos/:nome', validaGenero.findByNameParams, GeneroControllers.put);
 router.delete('/generos/:nome', validaGenero.findByNameParams, GeneroControllers.delete);
+
+router.get('/livros', LivroControllers.list);
+router.post('/livros', validaLivro.findByNameBody, validaLivro.findByGenero, LivroControllers.add);
+router.get('/livros/:id', validaLivro.findByIdParams, LivroControllers.get);
 
 module.exports = router;
