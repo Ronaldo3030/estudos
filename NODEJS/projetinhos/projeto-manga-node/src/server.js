@@ -1,7 +1,9 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
+const port = process.env.PORT || '3333';
 
 const routes = require('./routes');
 
@@ -21,6 +23,6 @@ app.use(express.json());
 
 app.use('/', routes);
 
-app.listen(process.env.PORT, () => {
-    console.log("Servidor rodando na porta: " + process.env.PORT);
+app.listen(port, () => {
+    console.log("Servidor rodando na porta: " + port);
 });
