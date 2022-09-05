@@ -15,4 +15,16 @@ specificationsRoutes.post("/", (req, res) => {
     return res.status(201).send();
 });
 
+specificationsRoutes.get("/", (req, res) => {
+    const all = specificationsRepository.list();
+
+    const specificationsExist = all.some(item => item);
+
+    if(!specificationsExist){
+        return res.status(400).json({error: "Nothing specifications"});
+    }
+
+    return res.json(all);
+});
+
 export { specificationsRoutes };
