@@ -40,14 +40,23 @@ module.exports = {
     },
     findByGenero: async (req, res, next) => {
         const { genero } = req.body;
-
-        const generoExiste = generos.find(search_genero => search_genero.id === genero);
-
-        if(!generoExiste){
-            return res.status(400).json({error: "Gênero inexistente!"});
+        if(genero){
+            const generoExiste = generos.find(search_genero => search_genero.id === genero);
+            if (!generoExiste) {
+                return res.status(400).json({ error: "Gênero inexistente!" });
+            }
+    
+            req.genero = generoExiste.id;
+            next();
         }
-
-        req.genero = generoExiste.id;
+        next();
+    },
+    validaBody: async (req, res, next) => {
+        const data = req.body;
+        const dataExiste = Object.keys(data);
+        if(dataExiste.length <= 0){
+            return res.status(400).json({error: "Dados invalidos!"});
+        }
         next();
     }
 }

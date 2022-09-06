@@ -31,5 +31,28 @@ module.exports = {
         const { livro } = req;
         return res.json(livro);
     },
+    put: async (req, res) => {
+        const { livro } = req;
+        const { nome, autor, qtd_pagina, genero } = req.body;
+        if(nome){
+            livro.nome = nome;
+        }
+        if(autor){
+            livro.autor = autor;
+        }
+        if(qtd_pagina){
+            livro.qtd_pagina = qtd_pagina;
+        }
+        if(genero){
+            livro.genero = genero;
+        }
+
+        return res.json(livro);
+    },
+    delete: async (req, res) => {
+        const {livro} = req;
+        livros.splice(livro, 1);
+        return res.status(204).send();
+    },
     livros
 }
