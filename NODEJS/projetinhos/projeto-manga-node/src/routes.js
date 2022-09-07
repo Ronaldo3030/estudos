@@ -16,9 +16,12 @@ router.put('/generos/:nome', validaLivro.validaBody, validaGenero.findByNamePara
 router.delete('/generos/:nome', validaGenero.findByNameParams, GeneroControllers.delete);
 
 router.get('/livros', LivroControllers.list);
-router.post('/livros', validaLivro.findByNameBody, validaLivro.findByGenero, LivroControllers.add);
+// router.post('/livros', validaLivro.findByNameBody, validaLivro.findByGenero, LivroControllers.add);
+router.post('/livros', validaLivro.findByNameBody, LivroControllers.add);
 router.get('/livros/:id', validaLivro.findByIdParams, LivroControllers.get);
 router.put('/livros/:id', validaLivro.validaBody, validaLivro.findByIdParams, validaLivro.findByGenero, LivroControllers.put);
 router.delete('/livros/:id', validaLivro.findByIdParams, LivroControllers.delete);
+router.patch('/livros/:id/done', validaLivro.findByIdParams, LivroControllers.done);
+router.patch('/livros/:id/undone', validaLivro.findByIdParams, LivroControllers.undone);
 
 module.exports = router;
