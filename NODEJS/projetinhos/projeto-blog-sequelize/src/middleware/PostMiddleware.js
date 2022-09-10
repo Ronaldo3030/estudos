@@ -17,6 +17,23 @@ module.exports = {
         req.post = post;
         next();
     },
+    
+    validateAnyBody: async (req, res, next) => {
+        const { title, body, language } = req.body;
+
+        if (!title && !body && !language) {
+            res.status(401).json({ error: "Data is not defined" })
+        }
+
+        const post = {
+            title,
+            body,
+            language
+        }
+
+        req.post = post;
+        next();
+    },
 
     validateIdParams: async (req, res, next) => {
         const { id } = req.params;
@@ -31,7 +48,7 @@ module.exports = {
             return res.status(400).json({ error: "Invalid ID" });
         }
 
-        req.post = postExists;
+        req.postDB = postExists;
         next();
     },
 

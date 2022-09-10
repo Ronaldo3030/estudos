@@ -20,14 +20,24 @@ module.exports = {
     },
 
     get: async (req, res) => {
-        const { post } = req;
+        const { postDB } = req;
 
-        return res.json(post);
+        return res.json(postDB);
     },
 
     put: async (req, res) => {
-        const {post} = req;
+        const { postDB } = req;
+        const { post } = req;
 
-        
+        await postDB.update({
+            title: post.title,
+            body: post.body,
+            language: post.language,
+            updatedAt: new Date()
+        });
+
+        await postDB.save();
+
+        return res.status(201).json(postDB);
     }
 }
