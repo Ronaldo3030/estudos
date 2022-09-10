@@ -44,7 +44,7 @@ module.exports = {
             }
         });
 
-        if (postExists.length) {
+        if (!postExists) {
             return res.status(400).json({ error: "Invalid ID" });
         }
 

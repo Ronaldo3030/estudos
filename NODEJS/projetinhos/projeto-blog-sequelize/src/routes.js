@@ -12,5 +12,6 @@ router.post('/posts', PostMiddleware.validateBody, PostMiddleware.validateNameDB
 router.get('/posts', PostMiddleware.validateList, PostController.list);
 router.get('/posts/:id', PostMiddleware.validateIdParams, PostController.get);
 router.put('/posts/:id', PostMiddleware.validateAnyBody,  PostMiddleware.validateIdParams, PostMiddleware.validateNameDB, PostController.put);
+router.delete('/posts/:id',  PostMiddleware.validateIdParams, PostController.delete);
 
 module.exports = router;

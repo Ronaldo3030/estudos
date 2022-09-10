@@ -39,5 +39,13 @@ module.exports = {
         await postDB.save();
 
         return res.status(201).json(postDB);
+    },
+
+    delete: async (req, res) => {
+        const { postDB } = req;
+
+        await postDB.destroy();
+
+        return res.status(204).send();
     }
 }
