@@ -8,6 +8,7 @@ router.get('/ping', (req, res) => {
     res.json({ pong: true });
 });
 
-router.post('/posts', PostController.add);
+router.post('/posts', PostMiddleware.validateBody, PostMiddleware.validateNameDB, PostController.add);
+router.get('/posts', PostMiddleware.validateList, PostController.list);
 
 module.exports = router;

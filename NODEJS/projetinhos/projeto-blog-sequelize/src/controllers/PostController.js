@@ -11,5 +11,10 @@ module.exports = {
         });
 
         return res.status(201).json(newPost);
+    },
+    list: async (req, res) => {
+        const { data } = req;
+
+        return res.json(data);
     }
 }

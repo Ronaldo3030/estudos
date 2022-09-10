@@ -1,11 +1,11 @@
-
+const Post = require('../models/PostModel');
 
 module.exports = {
     validateBody: async (req, res, next) => {
         const { title, body, language } = req.body;
 
-        if(!title || !body || !language){
-            res.status(401).json({error: "Data is not defined"})
+        if (!title || !body || !language) {
+            res.status(401).json({ error: "Data is not defined" })
         }
 
         const post = {
@@ -15,6 +15,33 @@ module.exports = {
         }
 
         req.post = post;
+        next();
+    },
+    
+    validateNameDB: async (req, res, next) => {
+        const { post } = req;
+
+        const postExists = await Post.findAll({
+            where: {
+                title: post.title
+            }
+        });
+
+        if (postExists.length) {
+            return res.status(402).json({ error: "This Post already exists" });
+        }
+
+        next();
+    },
+
+    validateList: async (req, res, next) => {
+        const data = await Post.findAll();
+
+        if(data.length <= 0){
+            return res.status(401).json({error: "There is no Post"})
+        }
+
+        req.data = data;
         next();
     }
 }
