@@ -10,5 +10,7 @@ router.get('/ping', (req, res) => {
 
 router.post('/posts', PostMiddleware.validateBody, PostMiddleware.validateNameDB, PostController.add);
 router.get('/posts', PostMiddleware.validateList, PostController.list);
+router.get('/posts/:id', PostMiddleware.validateIdParams, PostController.get);
+router.put('/posts/:id', PostController.put);
 
 module.exports = router;

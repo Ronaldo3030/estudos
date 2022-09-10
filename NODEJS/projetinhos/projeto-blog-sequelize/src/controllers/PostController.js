@@ -12,9 +12,22 @@ module.exports = {
 
         return res.status(201).json(newPost);
     },
+
     list: async (req, res) => {
         const { data } = req;
 
         return res.json(data);
+    },
+
+    get: async (req, res) => {
+        const { post } = req;
+
+        return res.json(post);
+    },
+
+    put: async (req, res) => {
+        const {post} = req;
+
+        
     }
 }
