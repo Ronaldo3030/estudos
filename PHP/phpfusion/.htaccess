@@ -1,0 +1,38 @@
+# Disable directory listing
+Options -Indexes
+
+# Force utf-8 charset
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .svg .woff .woff2
+
+# Security
+ServerSignature Off
+
+# Protect .htaccess file
+<Files .htaccess>
+    Require all denied
+</Files>
+
+# Protect config.php
+<Files config.php>
+    Require all denied
+</Files>
+
+# Protect fusion_error_log.log
+<Files fusion_error_log.log>
+    Require all denied
+</Files>
+
+# Protect .cache files
+<Files *.cache>
+    Order allow,deny
+    deny from all
+</Files>
+
+<ifModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</ifModule>
+
+ErrorDocument 401 /phpfusion/error.php?code=401
+ErrorDocument 403 /phpfusion/error.php?code=403
+ErrorDocument 404 /phpfusion/error.php?code=404

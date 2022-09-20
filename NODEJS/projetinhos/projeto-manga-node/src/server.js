@@ -3,7 +3,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const port = process.env.PORT || '3333';
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger.json');
+
+const port = process.env.PORT || '3333' || '3000';
 
 const routes = require('./routes');
 
@@ -36,6 +39,8 @@ app.use((req, res, next) => {
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use('/', routes);
 

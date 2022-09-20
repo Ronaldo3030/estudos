@@ -57,7 +57,7 @@ module.exports = {
     undone: async (req, res) => {
         const {livro} = req;
         if(livro.status === false){
-            return res.status(400).json({error: "Este livro ainda não foi lido!"});
+            return res.status(401).json({error: "Este livro ainda não foi lido!"});
         }
         livro.status = false;
         return res.status(203).send();
@@ -65,7 +65,7 @@ module.exports = {
     done: async (req, res) => {
         const {livro} = req;
         if(livro.status === true){
-            return res.status(400).json({error: "Este livro já foi lido!"});
+            return res.status(401).json({error: "Este livro já foi lido!"});
         }
         livro.status = true;
         return res.status(203).send();

@@ -20,7 +20,7 @@ module.exports = {
         const livroExiste = livros.find(livro => livro.nome === nome);
 
         if (livroExiste) {
-            return res.status(400).json({ error: "Esse livro já existe!" });
+            return res.status(401).json({ error: "Esse livro já existe!" });
         }
 
         req.livro = livroExiste;
@@ -43,7 +43,7 @@ module.exports = {
         if(genero){
             const generoExiste = generos.find(search_genero => search_genero.id === genero);
             if (!generoExiste) {
-                return res.status(400).json({ error: "Gênero inexistente!" });
+                return res.status(402).json({ error: "Gênero inexistente!" });
             }
     
             req.genero = generoExiste.id;

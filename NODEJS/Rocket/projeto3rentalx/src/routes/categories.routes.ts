@@ -1,18 +1,17 @@
 import { Router } from 'express';
+import multer from 'multer';
 import { CategoriesRepository } from '../modules/cars/repositories/CategoriesRepository';
-import { CreateCategoryService } from '../modules/cars/services/CreateCategoryService';
+import { createCategoryController } from '../modules/cars/useCases/createCategory';
 
 const categoriesRoutes = Router();
 const categoriesRepository = new CategoriesRepository();
 
-categoriesRoutes.post("/", (req, res) => {
-    const { name, description } = req.body;
-
-    const createCategoryService = new CreateCategoryService(categoriesRepository);
+const upload = multer({
     
-    createCategoryService.execute({name, description});
+});
 
-    return res.status(201).send();
+categoriesRoutes.post("/", (req, res) => {
+    return createCategoryController.handle(req, res);
 });
 
 categoriesRoutes.get("/", (req, res) => {
@@ -20,11 +19,15 @@ categoriesRoutes.get("/", (req, res) => {
 
     const categoriesExist = all.some((item) => item);
 
-    if(!categoriesExist){
-        return res.status(400).json({error: "Nothing categories"});
+    if (!categoriesExist) {
+        return res.status(400).json({ error: "Nothing categories" });
     }
 
     return res.json(all);
-})
+});
+
+categoriesRoutes.post("/import", (req,res) => {
+
+});
 
 export { categoriesRoutes };

@@ -1,0 +1,456 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Api livro Estudo",
+    "description": "Api para estudar mais sobre apis, sobre livros.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "ronaldomacielcamposjunior@gmail.com"
+    }
+  },
+  "paths": {
+    "/generos": {
+      "post": {
+        "tags": [
+          "Gênero"
+        ],
+        "summary": "Cria um gênero",
+        "description": "Cria um novo gênero para se usar em livros",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "nome": "nome de gênero para exemplo"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "400": {
+            "description": "Dados inválidos"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Gênero"
+        ],
+        "summary": "Lista todos gêneros",
+        "description": "Lista todos os gêneros cadastrados",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Não existe nenhum gênero"
+          }
+        }
+      }
+    },
+    "/generos/{generoNome}": {
+      "get": {
+        "tags": [
+          "Gênero"
+        ],
+        "summary": "Mostra gênero",
+        "description": "Mostra gênero especificado",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Este gênero não existe"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Gênero"
+        ],
+        "summary": "Edita um gênero",
+        "description": "Edita algum gênero já cadastrado",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "nome": "novo nome para o gênero"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Este gênero não existe"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Gênero"
+        ],
+        "summary": "Deleta um gênero",
+        "description": "Deleta gênero especificado",
+        "responses": {
+          "204": {
+            "description": "Sucesso"
+          },
+          "400": {
+            "description": "Este gênero não existe"
+          }
+        }
+      }
+    },
+    "/livros": {
+      "post": {
+        "tags": [
+          "Livro"
+        ],
+        "summary": "Cadastra Livro",
+        "description": "Cadastra um novo Livro",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "autor": {
+                    "type": "string"
+                  },
+                  "qtd_pagina": {
+                    "type": "integer"
+                  },
+                  "genero": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "nome": "nome do livro",
+                  "autor": "autor do livro",
+                  "qtd_pagina": 123,
+                  "genero": "id de um gênero já cadastrado"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "400": {
+            "description": "Dados inválidos"
+          },
+          "401": {
+            "description": "Esse livro já existe"
+          },
+          "402": {
+            "description": "Esse gênero não existe"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Livro"
+        ],
+        "summary": "Lista todos os Livros",
+        "description": "Lista todos os livros cadastrados",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "autor": {
+                        "type": "string"
+                      },
+                      "qtd_pagina": {
+                        "type": "integer"
+                      },
+                      "genero": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Nenhum livro cadastrado"
+          }
+        }
+      }
+    },
+    "/livros/{livroId}": {
+      "get": {
+        "tags": [
+          "Livro"
+        ],
+        "summary": "Mostra livro",
+        "description": "Mostra livro especificado",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "autor": {
+                        "type": "string"
+                      },
+                      "qtd_pagina": {
+                        "type": "integer"
+                      },
+                      "genero": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Este Livro não existe"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Livro"
+        ],
+        "summary": "Edita um Livro",
+        "description": "Edita algum Livro já cadastrado",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "autor": {
+                    "type": "string"
+                  },
+                  "qtd_pagina": {
+                    "type": "integer"
+                  },
+                  "genero": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "nome": "novo nome do livro",
+                  "autor": "novo autor do livro",
+                  "qtd_pagina": 123,
+                  "genero": "nova id de um gênero já cadastrado"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "autor": {
+                        "type": "string"
+                      },
+                      "qtd_pagina": {
+                        "type": "integer"
+                      },
+                      "genero": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos"
+          },
+          "402": {
+            "description": "Este gênero não existe"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Livro"
+        ],
+        "summary": "Deleta um Livro",
+        "description": "Deleta Livro especificado",
+        "responses": {
+          "204": {
+            "description": "Sucesso"
+          },
+          "400": {
+            "description": "Este Livro não existe"
+          }
+        }
+      }
+    },
+    "/livros/{livroID}/done": {
+      "patch": {
+        "tags": [
+          "Livro"
+        ],
+        "summary": "Altera status do livro (true)",
+        "description": "Altera status do livro especificado para true, para marcar caso ele já foi lido",
+        "responses": {
+          "203": {
+            "description": "Sucesso"
+          },
+          "401": {
+            "description": "Esse livro já foi lido"
+          },
+          "400": {
+            "description": "Este Livro não existe"
+          }
+        }
+      }
+    },
+    "/livros/{livroID}/undone": {
+      "patch": {
+        "tags": [
+          "Livro"
+        ],
+        "summary": "Altera status do livro (false)",
+        "description": "Altera status do livro especificado para false, para marcar caso ele não foi lido",
+        "responses": {
+          "203": {
+            "description": "Sucesso"
+          },
+          "401": {
+            "description": "Esse livro ainda não foi lido"
+          },
+          "400": {
+            "description": "Este Livro não existe"
+          }
+        }
+      }
+    }
+  }
+}
