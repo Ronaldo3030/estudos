@@ -1,4 +1,4 @@
-import express from 'express';
+const express = require("express");
 
 const app = express();
 
@@ -13,5 +13,3 @@ app.get('/ping', (req, res) => {
 app.listen(port, () => {
   console.log("Servidor rodando na porta: " + port);
 });
-
-export default app;
