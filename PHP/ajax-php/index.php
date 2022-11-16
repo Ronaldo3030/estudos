@@ -10,6 +10,7 @@
 
 <body>
   <h2>Cadastrar</h2>
+  <button id="atualiza">atualiza</button>
   <form id="form" action="">
     <input type="text" name="nome" id="nome"><br>
     <input type="text" name="sobrenome" id="sobrenome"><br>
@@ -17,9 +18,8 @@
   </form>
   <hr>
   <h2>Lista</h2>
-  <div style="border: 1px solid black;padding: 5px;">
-    <p style="margin: 0;">nome</p>
-    <p style="margin: 0;">sobrenome</p>
+  <div>
+    <ul id="container"></ul>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <script src="src/js/script.js"></script>

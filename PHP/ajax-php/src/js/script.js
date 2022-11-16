@@ -4,26 +4,39 @@ $("#form").submit((e) => {
   let nome = $("#nome").val();
   let sobrenome = $("#sobrenome").val();
   $.ajax({
-    type: "POST",
     url: "src/ajax/ajax.php",
+    type: "POST",
     data: {
-      acao: "novo_user",
+      acao: "inserir",
       nome,
       sobrenome
+    },
+    success: (res) => {
+      pegaUsuarios();
+      alert(res);
     }
-  }).then((res) => {
-    console.log(res);
   });
+});
+
+$("#atualiza").click(() => {
+  pegaUsuarios();
 });
 
 function pegaUsuarios() {
   $.ajax({
-    type: "GET",
-    url: "src/ajax/pegaUsuarios.php"
-  }).then((res) => {
-    console.log(res);
-  }).done((res) => {
-    console.log('res');
+    url: "src/ajax/ajax.php",
+    type: "POST",
+    data: {
+      acao: "mostrar"
+    },
+    success: (res) => {
+      document.getElementById('container').innerHTML = "";
+      Object.entries(res).forEach(item => {
+        let objeto = item[1];
+        console.log(objeto);
+        document.getElementById('container').innerHTML += `<li>${item[1].nome} - ${item[1].sobrenome}</li>`;
+      });
+    }
   });
 }
 pegaUsuarios();
