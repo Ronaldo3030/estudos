@@ -11,8 +11,8 @@
 <body>
   <h2>Cadastrar</h2>
   <form id="form" action="">
-    <input type="text" name="nome"><br>
-    <input type="text" name="sobrenome"><br>
+    <input type="text" name="nome" id="nome"><br>
+    <input type="text" name="sobrenome" id="sobrenome"><br>
     <input type="submit" value="Enviar"><br>
   </form>
   <hr>
