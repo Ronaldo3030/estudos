@@ -1,0 +1,1 @@
+const key = "RGAPI-b358be7c-6071-48eb-8598-9387a2252aba";
