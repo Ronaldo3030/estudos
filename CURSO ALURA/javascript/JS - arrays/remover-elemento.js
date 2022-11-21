@@ -1,0 +1,9 @@
+const nomes = ["João", "Ana", "Caio", "Lara", "Marjorie", "Leo"];
+
+// SPLICE TIRA ELEMENTOS
+// PRIMEIRO METODO PASSA O LUGAR QUE COMEÇA A TIRAR
+// SEGUNDO METODO PASSA A QUANTIDADE QUE VAI TIRAR
+// TERCEIRO METODO (OPCIONAL) PASSA O QUE VAI COLOCAR NO LUGAR DO QUE FOI TIRADO
+nomes.splice(1, 2, "Rodrigo");
+
+console.log(nomes)
