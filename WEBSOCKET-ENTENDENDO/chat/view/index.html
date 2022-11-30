@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Chat</title>
+  </head>
+  <style>
+    html {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    }
+
+    body{
+      background-color: rgb(212, 212, 212);
+      height: 90vh;
+      width: 99%;
+    }
+
+    header {
+      padding: 5px 0;
+      text-align: center;
+      background-color: rgb(59, 59, 194);
+      color: #fbfbfb;
+      margin-bottom: 15px;
+    }
+    .container{
+      display: grid;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .container form{
+      display: grid;
+      align-items: center;
+      justify-content: center;
+    }
+    .container form label{
+      text-align: center;
+    }
+    .container form input{
+      width: 200px;
+      padding: 5px;
+    }
+
+  </style>
+  <body>
+    <header><h2>Teste de chat</h2></header>
+
+    <div class="container">
+      <form method="get" action="chat">
+        <label id="name" for="name">Nome</label>
+        <input type="text" name="name" required /><br />
+        <input type="submit" value="Enviar" />
+      </form>
+    </div>
+  </body>
+</html>
