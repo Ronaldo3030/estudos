@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Serie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
-  public function index(Request $req)
+  public function index()
   {
-    // return $req->get('id'); PEGA O /nomeDaRota?id=123
-    // return redirect('/');
-    $series = [
-      "Punisher",
-      "LOST",
-      "Vikings",
-      "GOT"
-    ];
+    $series = Serie::all();
+    dd($series);
 
     return view('series.index', [
       'series' => $series
@@ -23,7 +19,17 @@ class SeriesController extends Controller
 
   }
 
-  public function create(){
+  public function create()
+  {
     return view('series.create');
+  }
+
+  public function store(Request $request)
+  {
+    $nomeSerie = $request->input('nome');
+
+    DB::insert("INSERT INTO series (nome) VALUES (?)", [$nomeSerie]);
+    return redirect('/series');
+
   }
 }
