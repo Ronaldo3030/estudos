@@ -11,7 +11,6 @@ class SeriesController extends Controller
   public function index()
   {
     $series = Serie::all();
-    dd($series);
 
     return view('series.index', [
       'series' => $series
@@ -26,10 +25,10 @@ class SeriesController extends Controller
 
   public function store(Request $request)
   {
-    $nomeSerie = $request->input('nome');
+    $nomeSerie = $request->nome;
 
-    DB::insert("INSERT INTO series (nome) VALUES (?)", [$nomeSerie]);
+    Serie::create($request->all());
+
     return redirect('/series');
-
   }
 }
