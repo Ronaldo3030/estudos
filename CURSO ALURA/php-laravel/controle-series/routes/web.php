@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return to_route('series.index');
 });
 
-Route::get('/series', [SeriesController::class, 'index']);
-Route::get('/series/criar', [SeriesController::class, 'create']);
-Route::post('/series/salvar', [SeriesController::class, 'store']);
+// RESOURCE FAZ O PADRAO DO LARAVEL NAS ROTAS (INDEX, STORE, ETC)
+Route::resource('/series', SeriesController::class);
+// Route::controller(SeriesController::class)->group(function () {
+//     Route::get('/series', 'index')->name('series.index');
+//     Route::get('/series/criar', 'create')->name('series.create');
+//     Route::post('/series/salvar', 'store')->name('series.store');
+// });
